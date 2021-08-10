@@ -5,13 +5,17 @@ class DateHelper {
     } // Arremessa um erro para o dev.
 
     static dataTexto (data){
-        return data.getDate()
-            + '/' + (data.getMonth() + 1)
-            + '/' + data.getFullYear();
+        return `${data.getDate()}/${data.getMonth()+1}/${data.getFullYear()}`;
         
     }
 
     static textoData (texto){
+        if (!/\d{4}-\d{2}-\d{2}/.test(texto)){
+            throw new Error ("Formato incorreto: aaaa-mm-dd");
+        }
+
+
+
         return new Date(
             ...texto.split('-')
             .map((item,indice) => item - indice % 2));
@@ -28,6 +32,5 @@ class DateHelper {
             // queremos, então fazemos um map da função, e retornamos esse item 
             // com seu indice subtraindo, para sempre termos uma subtração em 
             // apenas nos meses...
-
 
 }
