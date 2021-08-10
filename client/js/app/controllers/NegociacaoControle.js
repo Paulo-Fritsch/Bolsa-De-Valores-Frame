@@ -13,11 +13,11 @@ class NegociacaoControle {
 
         event.preventDefault();
 
-        let data = new Date(...this._inputData
-            .value.split('-')
-            .map(function(item, indice) {
-                return item - indice % 2;
-            })); 
+        let data = new Date(
+            ...this._inputData.value
+            .split('-')
+            .map((item, indice) => item - indice % 2)
+        ); 
         //Em tese, o conjunto em computação começa em 0, sendo assim
         // o valor 0 recebe janeiro e assim por diante, mas ñ é isso que 
         // queremos, então fazemos um map da função, e retornamos esse item 
@@ -28,8 +28,8 @@ class NegociacaoControle {
             data,
             this._inputQuantidade.value,
             this._inputValor.value
-        );
-
-        console.log(negociacao);
+          );
+        
+          console.log(negociacao);
     }
 }
